@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.optaplanner:optaplanner-persistence-jaxb:7.18.0.Final-redhat-00004">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-persistence-jaxb/7.18.0.Final-redhat-00004/optaplanner-persistence-jaxb-7.18.0.Final-redhat-00004.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-persistence-jaxb/7.18.0.Final-redhat-00004/optaplanner-persistence-jaxb-7.18.0.Final-redhat-00004-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/optaplanner/optaplanner-persistence-jaxb/7.18.0.Final-redhat-00004/optaplanner-persistence-jaxb-7.18.0.Final-redhat-00004-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
