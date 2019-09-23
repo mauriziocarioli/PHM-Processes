@@ -17,8 +17,25 @@
             <parameters/>
         </marshalling-strategy>
     </marshalling-strategies>
-    <event-listeners/>
-    <task-event-listeners/>
+    <event-listeners>
+        <event-listener>
+            <resolver>mvel</resolver>
+            <identifier> new com.health_insurance.monitoring.CustomProcessEventListener()</identifier>
+            <parameters/>
+        </event-listener>
+        <event-listener>
+            <resolver>mvel</resolver>
+            <identifier>new com.health_insurance.monitoring.CustomAgendaEventListener()</identifier>
+            <parameters/>
+        </event-listener>
+    </event-listeners>
+    <task-event-listeners>
+        <task-event-listener>
+            <resolver>mvel</resolver>
+            <identifier>new com.health_insurance.monitoring.CustomTaskLifeCycleEventListener()</identifier>
+            <parameters/>
+        </task-event-listener>
+    </task-event-listeners>
     <globals/>
     <work-item-handlers>
         <work-item-handler>

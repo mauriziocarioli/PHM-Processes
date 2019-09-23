@@ -1,0 +1,33 @@
+= Population Health Management
+[.line-through]####
+
+* Create users and roles (see script in src/main/sh)
+* Use the following json body when starting the process with the REST API
+[source,JSON]
+----
+{
+     "pMemberId": "-12345678-"
+}
+----
+
+== Scenarios
+
+=== Baseline Scenario
+* Actor: pro
+* Actor: mem
+* Actor: rxs
+* Actor: chw
+
+=== Reminder Scenario
+* Change reminder timer in B143 subprocess to 30s
+* Actor: chw
+* Let 30s timer expires
+* See reminder service
+* Actor: chw
+
+=== Escalation Scenario
+* CHange escalation timer in B143 subprocess to 30s
+* Actor: chw
+* Let 30s timer expires
+* Actor: mch
+* Actor: chw
