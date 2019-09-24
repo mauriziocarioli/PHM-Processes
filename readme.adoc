@@ -26,7 +26,7 @@
 * Actor: chw
 
 === Escalation Scenario
-* CHange escalation timer in B143 subprocess to 30s
+* Change escalation timer in B143 subprocess to 30s
 * Actor: chw
 * Let 30s timer expires
 * Actor: mch
