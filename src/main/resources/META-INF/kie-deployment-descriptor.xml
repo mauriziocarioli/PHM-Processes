@@ -20,7 +20,7 @@
     <event-listeners>
         <event-listener>
             <resolver>mvel</resolver>
-            <identifier> new com.health_insurance.monitoring.PHMProcessEventListener()</identifier>
+            <identifier>new com.health_insurance.monitoring.PHMProcessEventListener()</identifier>
             <parameters/>
         </event-listener>
         <event-listener>
