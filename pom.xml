@@ -54,7 +54,7 @@
       <plugin>
         <groupId>org.kie</groupId>
         <artifactId>kie-maven-plugin</artifactId>
-        <version>7.18.0.Final-redhat-00004</version>
+        <version>${version.org.kie}</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>
