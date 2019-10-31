@@ -2,7 +2,7 @@
 #
 # groups CCN, MLP and MCC should be created as well with Home Page = Task Inbox
 #
-DEMO=./rhpam7-install-demo-pgsql
+DEMO=~/Demos/rhpam7-install-demo-pgsql
 TARGET=$DEMO/target
 JBOSS_EAP=jboss-eap-7.2
 JBOSS_HOME=$TARGET/$JBOSS_EAP
