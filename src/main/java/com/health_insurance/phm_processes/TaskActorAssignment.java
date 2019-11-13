@@ -6,12 +6,59 @@ package com.health_insurance.phm_processes;
 
 public class TaskActorAssignment implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public TaskActorAssignment() {
-    }
+	@org.kie.api.definition.type.Label(value = "Actor")
+	private java.lang.String actor;
+	@org.kie.api.definition.type.Label(value = "Channel")
+	private java.lang.String channel;
+	@org.kie.api.definition.type.Label(value = "Escalation Actor")
+	private java.lang.String escalationActor;
+	@org.kie.api.definition.type.Label(value = "EscalationChannel")
+	private java.lang.String escalationChannel;
 
+	public TaskActorAssignment() {
+	}
 
+	public java.lang.String getActor() {
+		return this.actor;
+	}
 
+	public void setActor(java.lang.String actor) {
+		this.actor = actor;
+	}
+
+	public java.lang.String getChannel() {
+		return this.channel;
+	}
+
+	public void setChannel(java.lang.String channel) {
+		this.channel = channel;
+	}
+
+	public java.lang.String getEscalationActor() {
+		return this.escalationActor;
+	}
+
+	public void setEscalationActor(java.lang.String escalationActor) {
+		this.escalationActor = escalationActor;
+	}
+
+	public java.lang.String getEscalationChannel() {
+		return this.escalationChannel;
+	}
+
+	public void setEscalationChannel(java.lang.String escalationChannel) {
+		this.escalationChannel = escalationChannel;
+	}
+
+	public TaskActorAssignment(java.lang.String actor,
+			java.lang.String channel, java.lang.String escalationActor,
+			java.lang.String escalationChannel) {
+		this.actor = actor;
+		this.channel = channel;
+		this.escalationActor = escalationActor;
+		this.escalationChannel = escalationChannel;
+	}
 
 }
