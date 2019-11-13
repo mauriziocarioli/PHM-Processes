@@ -20,8 +20,8 @@ public class Reminder implements java.io.Serializable {
 	@org.kie.api.definition.type.Label("Body")
 	private java.lang.String body;
 
-	@org.kie.api.definition.type.Description(value = "eMail address to use in the From field.")
-	@org.kie.api.definition.type.Label(value = "From eMail address")
+	@org.kie.api.definition.type.Label("From eMail address")
+	@org.kie.api.definition.type.Description("Address to use in the From field.")
 	private java.lang.String from;
 
 	public Reminder() {
