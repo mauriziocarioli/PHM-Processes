@@ -17,7 +17,7 @@ public class Response implements Serializable {
 	@Label(value = "Task Actor Assignment")
 	private TaskActorAssignment assignment;
 	@Label(value = "Reminder")
-	private Reminder reminder;
+	private com.health_insurance.phm_processes.Reminder reminder;
 
 	public Response() {
 	}
@@ -31,17 +31,17 @@ public class Response implements Serializable {
 		this.assignment = assignment;
 	}
 
-	public Reminder getReminder() {
+	public com.health_insurance.phm_processes.Reminder getReminder() {
 		return this.reminder;
 	}
 
-	public void setReminder(Reminder reminder) {
+	public void setReminder(com.health_insurance.phm_processes.Reminder reminder) {
 		this.reminder = reminder;
 	}
 
 	public Response(
 			TaskActorAssignment assignment,
-			Reminder reminder) {
+			com.health_insurance.phm_processes.Reminder reminder) {
 		this.assignment = assignment;
 		this.reminder = reminder;
 	}
