@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PHM-Cases" />
+        <module name="PHM-Processes" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PHM-Cases" target="1.5" />
+      <module name="PHM-Processes" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
