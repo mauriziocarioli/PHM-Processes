@@ -10,15 +10,19 @@ public class Reminder implements java.io.Serializable {
 
 	static final long serialVersionUID = 1L;
 
-	@org.kie.api.definition.type.Description(value = "Address where to send the reminder message.")
-	@org.kie.api.definition.type.Label(value = "eMail Address")
+	@org.kie.api.definition.type.Description("Address where to send the reminder message.")
+	@org.kie.api.definition.type.Label("eMail Address")
 	private java.lang.String address;
-	@org.kie.api.definition.type.Description(value = "Subject of the reminder message.")
-	@org.kie.api.definition.type.Label(value = "Subject")
+	@org.kie.api.definition.type.Description("Subject of the reminder message.")
+	@org.kie.api.definition.type.Label("Subject")
 	private java.lang.String subject;
-	@org.kie.api.definition.type.Description(value = "Text of the reminder.")
-	@org.kie.api.definition.type.Label(value = "Body")
+	@org.kie.api.definition.type.Description("Text of the reminder.")
+	@org.kie.api.definition.type.Label("Body")
 	private java.lang.String body;
+
+	@org.kie.api.definition.type.Description(value = "eMail address to use in the From field.")
+	@org.kie.api.definition.type.Label(value = "From eMail address")
+	private java.lang.String from;
 
 	public Reminder() {
 	}
@@ -47,11 +51,20 @@ public class Reminder implements java.io.Serializable {
 		this.body = body;
 	}
 
+	public java.lang.String getFrom() {
+		return this.from;
+	}
+
+	public void setFrom(java.lang.String from) {
+		this.from = from;
+	}
+
 	public Reminder(java.lang.String address, java.lang.String subject,
-			java.lang.String body) {
+			java.lang.String body, java.lang.String from) {
 		this.address = address;
 		this.subject = subject;
 		this.body = body;
+		this.from = from;
 	}
 
 }
