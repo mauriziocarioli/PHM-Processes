@@ -3,8 +3,32 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>jboss-developer-plugin-repository</id>
-        <url>http://jboss-developer.github.io/temp-maven-repo/</url>
+        <id>jboss-earlyaccess-plugin-repository</id>
+        <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>redhat-ga-repository</id>
+        <url>http://maven.repository.redhat.com/ga/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-ga-repository</id>
+        <url>http://maven.repository.redhat.com/techpreview/all</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-ga-plugin-repository</id>
+        <url>http://maven.repository.redhat.com/techpreview/all</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
@@ -13,6 +37,22 @@
       <metadata>
         <id>jboss-earlyaccess-repository</id>
         <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>snapshots-repo</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-public-repository-group</id>
+        <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
@@ -35,62 +75,6 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>jboss-public-repository-group</id>
-        <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss-ga-plugin-repository</id>
-        <url>http://maven.repository.redhat.com/techpreview/all</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>snapshots-repo</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss-ga-repository</id>
-        <url>http://maven.repository.redhat.com/techpreview/all</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>jboss-earlyaccess-plugin-repository</id>
-        <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>geo-2</id>
-        <url>http://download.osgeo.org/webdav/geotools/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>redhat-ga-repository</id>
-        <url>http://maven.repository.redhat.com/ga/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
         <id>central</id>
         <url>https://repo.maven.apache.org/maven2</url>
         <source>PROJECT</source>
@@ -101,6 +85,22 @@
       <metadata>
         <id>geo</id>
         <url>http://repo.boundlessgeo.com/main/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>jboss-developer-plugin-repository</id>
+        <url>http://jboss-developer.github.io/temp-maven-repo/</url>
+        <source>SETTINGS</source>
+      </metadata>
+    </repository>
+    <repository>
+      <include>true</include>
+      <metadata>
+        <id>geo-2</id>
+        <url>http://download.osgeo.org/webdav/geotools/</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
