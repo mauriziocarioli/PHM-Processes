@@ -1,7 +1,8 @@
 package com.health_insurance.phm_processes;
 
 import org.kie.api.definition.type.*;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serializable;
 
 /**
@@ -39,7 +40,18 @@ public class Response implements Serializable {
 		this.reminder = reminder;
 	}
 
-	public Response(
+	@Override
+	public String toString() {
+		final ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			return objectMapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+    public Response(
 			TaskActorAssignment assignment,
 			com.health_insurance.phm_processes.Reminder reminder) {
 		this.assignment = assignment;
