@@ -2,6 +2,9 @@ package com.health_insurance.phm_processes;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.kie.api.definition.type.*;
 
 /**
@@ -64,7 +67,13 @@ public class Reminder implements Serializable {
 	
 	@Override
 	public String toString() {
-	    return "{\"address\":\""+address"\",\"subject\":\""+subject"\",\"body\":\""+body"\",\"from\":\""+from"\"}";
+		final ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			return objectMapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 	public Reminder(String address, String subject,
