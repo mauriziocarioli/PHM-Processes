@@ -40,7 +40,7 @@ public class Response implements Serializable {
 		this.reminder = reminder;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try {
@@ -49,7 +49,7 @@ public class Response implements Serializable {
 			e.printStackTrace();
 		}
 		return "";
-	}
+	}*/
 	
     public Response(
 			TaskActorAssignment assignment,
