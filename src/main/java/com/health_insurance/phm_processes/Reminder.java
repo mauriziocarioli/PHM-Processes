@@ -65,7 +65,7 @@ public class Reminder implements Serializable {
 		this.from = from;
 	}
 	
-	/*@Override
+	@Override
 	public String toString() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try {
@@ -74,7 +74,7 @@ public class Reminder implements Serializable {
 			e.printStackTrace();
 		}
 		return "";
-	}*/
+	}
 
 	public Reminder(String address, String subject,
 			String body, String from) {
