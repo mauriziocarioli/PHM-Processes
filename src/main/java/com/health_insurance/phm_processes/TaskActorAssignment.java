@@ -58,7 +58,7 @@ public class TaskActorAssignment implements Serializable {
 		this.escalationChannel = escalationChannel;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try {
@@ -67,7 +67,7 @@ public class TaskActorAssignment implements Serializable {
 			e.printStackTrace();
 		}
 		return "";
-	}*/
+	}
 	
 	public TaskActorAssignment(String actor,
 			String channel, String escalationActor,
