@@ -15,7 +15,7 @@ import org.kie.api.definition.type.*;
 @Description("Reminder to be sent if task not soft completed by given period of time.")
 public class Reminder implements Serializable {
 
-	private static final long serialVersionUID = 6244709968935277414L;
+	private static final long serialVersionUID = 9203552419795952130L;
 
 	@Description("Address where to send the reminder message.")
 	@Label("eMail Address")

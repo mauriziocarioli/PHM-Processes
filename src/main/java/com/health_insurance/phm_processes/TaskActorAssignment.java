@@ -12,7 +12,7 @@ import org.kie.api.definition.type.*;
 @Label(value = "Task Actor Assignment")
 public class TaskActorAssignment implements Serializable {
 
-	private static final long serialVersionUID = 3509087317068951922L;
+	private static final long serialVersionUID = 3058923314416600036L;
 
 	@Label(value = "Actor")
 	private String actor;

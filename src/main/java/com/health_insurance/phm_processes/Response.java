@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Description("Response from a REST API Call.")
 public class Response implements Serializable {
 
-	private static final long serialVersionUID = 4778210060268569993L;
+	private static final long serialVersionUID = -8204941530448431008L;
 
 	@Label(value = "Task Actor Assignment")
 	private TaskActorAssignment assignment;
