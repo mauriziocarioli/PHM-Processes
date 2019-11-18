@@ -13,14 +13,25 @@ import java.io.Serializable;
 @Description("Response from a REST API Call.")
 public class Response implements Serializable {
 
-	private static final long serialVersionUID = -8204941530448431008L;
+	private static final long serialVersionUID = -7483068251987822005L;
 
+	@Label(value = "Task")
+	private Task task;
 	@Label(value = "Task Actor Assignment")
 	private TaskActorAssignment assignment;
 	@Label(value = "Reminder")
 	private com.health_insurance.phm_processes.Reminder reminder;
 
 	public Response() {
+	}
+
+	public Task getTask() {
+		return this.task;
+	}
+
+	public void setTask(
+			Task task) {
+		this.task = task;
 	}
 
 	public TaskActorAssignment getAssignment() {
@@ -52,8 +63,10 @@ public class Response implements Serializable {
 	}
 	
     public Response(
+    		Task task,
 			TaskActorAssignment assignment,
 			com.health_insurance.phm_processes.Reminder reminder) {
+		this.task = task;
 		this.assignment = assignment;
 		this.reminder = reminder;
 	}
