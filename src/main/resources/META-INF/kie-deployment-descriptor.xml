@@ -46,13 +46,13 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.email.EmailWorkItemHandler("smtp.mailtrap.io", "2525", "9bd8ba8b41f67c", "304e73f3bb937b")</identifier>
+            <identifier>new org.jbpm.process.workitem.email.EmailWorkItemHandler(System.getenv("DEMO_SMTP_SERVER"), System.getenv("DEMO_SMTP_PORT"), System.getenv("DEMO_SMTP_USER"), System.getenv("DEMO_SMTP_PWD"))</identifier>
             <parameters/>
             <name>Email</name>
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.rest.RESTWorkItemHandler("phm", "phm1!")</identifier>
+            <identifier>new org.jbpm.process.workitem.rest.RESTWorkItemHandler(System.getenv("DEMO_REST_USER"),System.getenv("DEMO_REST_PWD"))</identifier>
             <parameters/>
             <name>Rest</name>
         </work-item-handler>
