@@ -52,7 +52,7 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.rest.RESTWorkItemHandler(System.getenv("DEMO_REST_USER"),System.getenv("DEMO_REST_PWD"))</identifier>
+            <identifier>new org.jbpm.process.workitem.rest.RESTWorkItemHandler(System.getenv("DEMO_REST_USER"), System.getenv("DEMO_REST_PWD"))</identifier>
             <parameters/>
             <name>Rest</name>
         </work-item-handler>
