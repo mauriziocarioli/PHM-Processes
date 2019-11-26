@@ -1,32 +1,35 @@
 = Population Health Management
 
-* Create users and roles (see script in src/main/sh)
-* Use the following json body when starting the process with the REST API
+=== Requirements
+* Create users and groups (see script in src/main/sh)
+* Start service on Node
+
+== Scenarios
+Start the process with POST at end point:
+http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes_1.0.1-SNAPSHOT/processes/PHM-Processes.R838/instances
 [source,JSON]
 ----
 {
-     "pMemberId": "-12345678-"
+     "pMemberId": "12345678"
 }
 ----
 
-== Scenarios
-
 === Baseline Scenario
-* Actor: pro
-* Actor: mem
-* Actor: rxs
-* Actor: chw
+* Actor: Peter (pro)
+* Actor: Mary (mem)
+* Actor: Robert (rxs)
+* Actor: Charlie (chw)
 
 === Reminder Scenario
 * Change reminder timer in B143 subprocess to 30s
-* Actor: chw
+* Actor: Charlie (chw)
 * Let 30s timer expires
 * See reminder service
-* Actor: chw
+* Actor: Charlie (chw)
 
 === Escalation Scenario
 * Change escalation timer in B143 subprocess to 30s
-* Actor: chw
+* Actor: Charlie (chw)
 * Let 30s timer expires
-* Actor: mch
-* Actor: chw
+* Actor: Marc (mch)
+* Actor: Charlie (chw)
