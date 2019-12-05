@@ -17,14 +17,14 @@ public class Reminder implements Serializable {
 
 	private static final long serialVersionUID = 9203552419795952130L;
 
-	@Description("Address where to send the reminder message.")
 	@Label("eMail Address")
+	@Description("Address where to send the reminder message.")
 	private String address;
-	@Description("Subject of the reminder message.")
 	@Label("Subject")
+	@Description("Subject of the reminder message.")
 	private String subject;
-	@Description("Text of the reminder.")
 	@Label("Body")
+	@Description("Text of the reminder.")
 	private String body;
 	@Label("From eMail address")
 	@Description("Address to use in the From field.")

@@ -15,12 +15,16 @@ public class TaskActorAssignment implements Serializable {
 	private static final long serialVersionUID = 3058923314416600036L;
 
 	@Label(value = "Actor")
+	@Description(value = "The actor of the task.")
 	private String actor;
 	@Label(value = "Channel")
+	@Description(value = "The application where the task is performed.")
 	private String channel;
 	@Label(value = "Escalation Actor")
+	@Description(value = "The actor of the escalation.")
 	private String escalationActor;
 	@Label(value = "EscalationChannel")
+	@Description(value = "The application where the escalation is performed.")
 	private String escalationChannel;
 
 	public TaskActorAssignment() {
