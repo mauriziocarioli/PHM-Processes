@@ -48,6 +48,14 @@ public class Task implements Serializable {
 		this.origId = origId;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getReminderFrequency() {
 		return this.reminderFrequency;
 	}
@@ -75,10 +83,10 @@ public class Task implements Serializable {
 		return "";
 	}
 
-	public Task(Integer id, String origId,
-			String reminderFrequency, String escalationTimer) {
+	public Task(Integer id, String origId, String status, String reminderFrequency, String escalationTimer) {
 		this.id = id;
 		this.origId = origId;
+		this.status = status;
 		this.reminderFrequency = reminderFrequency;
 		this.escalationTimer = escalationTimer;
 	}
