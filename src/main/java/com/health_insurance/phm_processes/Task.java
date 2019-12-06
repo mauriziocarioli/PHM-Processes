@@ -22,6 +22,9 @@ public class Task implements Serializable {
 	@Label(value = "Status")
 	@Description(value = "The lifecycle status of the task.")
 	private String status;
+	@Label(value = "Close")
+	@Description(value = "The type of task close.")
+	private String close;
 	@Description("The frequency of the reminder as an ISO 8601 value.")
 	@Label(value = "Reminder Frequency")
 	private String reminderFrequency;
@@ -56,6 +59,14 @@ public class Task implements Serializable {
 		this.status = status;
 	}
 
+	public String getClose() {
+		return close;
+	}
+
+	public void setClose(String close) {
+		this.close = close;
+	}
+
 	public String getReminderFrequency() {
 		return this.reminderFrequency;
 	}
@@ -83,10 +94,11 @@ public class Task implements Serializable {
 		return "";
 	}
 
-	public Task(Integer id, String origId, String status, String reminderFrequency, String escalationTimer) {
+	public Task(Integer id, String origId, String status, String close, String reminderFrequency, String escalationTimer) {
 		this.id = id;
 		this.origId = origId;
 		this.status = status;
+		this.close = close;
 		this.reminderFrequency = reminderFrequency;
 		this.escalationTimer = escalationTimer;
 	}
