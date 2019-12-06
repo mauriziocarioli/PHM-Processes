@@ -22,9 +22,18 @@ public class Task implements Serializable {
 	@Label(value = "Status")
 	@Description(value = "The lifecycle status of the task.")
 	private String status;
+	@Label(value = "Task Suppression.")
+	@Description(value = "Task inactive/suppression flag.")
+	private Boolean taskSuppression;
+	@Label(value = "Task Suppression Period")
+	@Description(value = "Task inactive/suppression period.")
+	private String taskSuppressionPeriod;
 	@Label(value = "Close")
 	@Description(value = "The type of task close.")
 	private String close;
+	@Label(value = "Task Hard Close Actor")
+	@Description(value = "Task hard close confirmation service url")
+	private String taskHardCloseUrl;
 	@Description("The frequency of the reminder as an ISO 8601 value.")
 	@Label(value = "Reminder Frequency")
 	private String reminderFrequency;
@@ -59,12 +68,36 @@ public class Task implements Serializable {
 		this.status = status;
 	}
 
+	public Boolean getTaskSuppression() {
+		return taskSuppression;
+	}
+
+	public void setTaskSuppression(Boolean taskSuppression) {
+		this.taskSuppression = taskSuppression;
+	}
+
+	public String getTaskSuppressionPeriod() {
+		return taskSuppressionPeriod;
+	}
+
+	public void setTaskSuppressionPeriod(String taskSuppressionPeriod) {
+		this.taskSuppressionPeriod = taskSuppressionPeriod;
+	}
+
 	public String getClose() {
 		return close;
 	}
 
 	public void setClose(String close) {
 		this.close = close;
+	}
+
+	public String getTaskHardCloseUrl() {
+		return taskHardCloseUrl;
+	}
+
+	public void setTaskHardCloseUrl(String taskHardCloseUrl) {
+		this.taskHardCloseUrl = taskHardCloseUrl;
 	}
 
 	public String getReminderFrequency() {
@@ -94,11 +127,14 @@ public class Task implements Serializable {
 		return "";
 	}
 
-	public Task(Integer id, String origId, String status, String close, String reminderFrequency, String escalationTimer) {
+	public Task(Integer id, String origId, String status, Boolean taskSuppression, String taskSuppressionPeriod, String close, String taskHardCloseUrl, String reminderFrequency, String escalationTimer) {
 		this.id = id;
 		this.origId = origId;
 		this.status = status;
+		this.taskSuppression = taskSuppression;
+		this.taskSuppressionPeriod = taskSuppressionPeriod;
 		this.close = close;
+		this.taskHardCloseUrl = taskHardCloseUrl;
 		this.reminderFrequency = reminderFrequency;
 		this.escalationTimer = escalationTimer;
 	}
