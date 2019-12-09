@@ -6,12 +6,36 @@ package com.health_insurance.phm_processes;
 
 public class TaskSuppressionPeriod implements java.io.Serializable {
 
-    static final long serialVersionUID = 1L;
+	static final long serialVersionUID = 1L;
 
-    public TaskSuppressionPeriod() {
-    }
+	@org.kie.api.definition.type.Label(value = "Start")
+	private java.time.LocalDateTime start;
+	@org.kie.api.definition.type.Label(value = "End")
+	private java.time.LocalDateTime end;
 
+	public TaskSuppressionPeriod() {
+	}
 
+	public java.time.LocalDateTime getStart() {
+		return this.start;
+	}
 
+	public void setStart(java.time.LocalDateTime start) {
+		this.start = start;
+	}
+
+	public java.time.LocalDateTime getEnd() {
+		return this.end;
+	}
+
+	public void setEnd(java.time.LocalDateTime end) {
+		this.end = end;
+	}
+
+	public TaskSuppressionPeriod(java.time.LocalDateTime start,
+			java.time.LocalDateTime end) {
+		this.start = start;
+		this.end = end;
+	}
 
 }
