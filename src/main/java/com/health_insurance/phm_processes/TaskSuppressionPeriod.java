@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class TaskSuppressionPeriod implements Serializable {
 
-	static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7090464708610446476L;
 
 	@Label(value = "Start")
 	private java.time.LocalDateTime start;

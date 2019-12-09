@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class Task implements Serializable {
 
-	private static final long serialVersionUID = 198620188724996430L;
+	private static final long serialVersionUID = -8860007291044844755L;
 
 	@Label(value = "Task Id")
 	@Description(value = "Numerical value identifying the task")
@@ -76,11 +76,11 @@ public class Task implements Serializable {
 		this.taskSuppression = taskSuppression;
 	}
 
-	public String getTaskSuppressionPeriod() {
+	public TaskSuppressionPeriod getTaskSuppressionPeriod() {
 		return taskSuppressionPeriod;
 	}
 
-	public void setTaskSuppressionPeriod(String taskSuppressionPeriod) {
+	public void setTaskSuppressionPeriod(TaskSuppressionPeriod taskSuppressionPeriod) {
 		this.taskSuppressionPeriod = taskSuppressionPeriod;
 	}
 
@@ -127,7 +127,7 @@ public class Task implements Serializable {
 		return "";
 	}
 
-	public Task(Integer id, String origId, String status, Boolean taskSuppression, String taskSuppressionPeriod, String close, String taskHardCloseUrl, String reminderFrequency, String escalationTimer) {
+	public Task(Integer id, String origId, String status, Boolean taskSuppression, TaskSuppressionPeriod taskSuppressionPeriod, String close, String taskHardCloseUrl, String reminderFrequency, String escalationTimer) {
 		this.id = id;
 		this.origId = origId;
 		this.status = status;
