@@ -27,7 +27,7 @@ public class Task implements Serializable {
 	private Boolean taskSuppression;
 	@Label(value = "Task Suppression Period")
 	@Description(value = "Task inactive/suppression period.")
-	private String taskSuppressionPeriod;
+	private TaskSuppressionPeriod taskSuppressionPeriod;
 	@Label(value = "Close")
 	@Description(value = "The type of task close.")
 	private String close;
