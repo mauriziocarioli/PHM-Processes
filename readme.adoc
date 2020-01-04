@@ -18,7 +18,8 @@ http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/p
 [source,JSON]
 ----
 {
-     "pMemberId": "12345678"
+     "pMemberId": "123",
+     "pTriggerId": "R383"
 }
 ----
 The value of pMemberId is unimportant.
