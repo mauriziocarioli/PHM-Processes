@@ -18,10 +18,11 @@ http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/p
 [source,JSON]
 ----
 {
-     "pMemberId": "12345678"
+     "pMemberId": "123",
+     "pTriggerId": "R383"
 }
 ----
-The value of pMemberId is unimportant.
+The values of pMemberId and pTriggerId are unimportant.
 
 If a task requires to be hard closed just send a signal with this POST end point:
 
