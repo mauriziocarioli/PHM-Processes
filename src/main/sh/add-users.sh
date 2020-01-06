@@ -1,10 +1,4 @@
 #!/bin/sh
-DEMO=~/Demos/rhpam7-install-demo-pgsql
-#DEMO=~/Demos/jbpm-server-7.30.0.Final-dist
-TARGET=$DEMO/target
-JBOSS_EAP=jboss-eap-7.2
-JBOSS_HOME=$TARGET/$JBOSS_EAP
-#JBOSS_HOME=$DEMO
 REALM=ApplicationRealm
 USER_PROPERTIES=application-users.properties
 GROUP_PROPERTIES=application-roles.properties
