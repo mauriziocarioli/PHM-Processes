@@ -1,0 +1,25 @@
+$REALM="ApplicationRealm"
+$USER_PROPERTIES="application-users.properties"
+$GROUP_PROPERTIES="application-roles.properties"
+#$USER_PROPERTIES="users.properties"
+#$GROUP_PROPERTIES="roles.properties"
+Write-Host "- enabling demo accounts setup ...`n"
+$argList1 = " -a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Robert -p 'redhatpam1!' -ro 'user,RXS' --silent"
+$argList2 = " -a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Marc -p 'redhatpam1!' -ro 'user,MCH' --silent"
+$argList3 = "-a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Patricia -p 'redhatpam1!' -ro 'user,PEA' --silent"
+$argList4 = "-a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Charlie -p 'redhatpam1!' -ro 'user,CHW' --silent"
+$argList5 = "-a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Matthew -p 'redhatpam1!' -ro 'user,MRX' --silent"
+$argList6 = "-a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Mary -p 'redhatpam1!' -ro 'user,MEM' --silent"
+$argList7 = "-a -r $REALM -up $USER_PROPERTIES -gp $GROUP_PROPERTIES -u Peter -p 'redhatpam1!' -ro 'user,PRO' --silent"
+try {
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList1"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList2"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList3"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList4"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList5"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList6"
+    Invoke-Expression "$JBOSS_HOME\bin\add-user.ps1 $argList7"
+} catch {
+    Write-Error "Error occurred during user account setup."
+    exit
+}
