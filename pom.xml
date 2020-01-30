@@ -11,7 +11,7 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <version.org.kie>7.31.0.Final</version.org.kie>
+    <version.org.kie>7.32.0.Final</version.org.kie>
   </properties>
   <dependencies>
     <dependency>
