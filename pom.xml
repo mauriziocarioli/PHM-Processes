@@ -7,7 +7,7 @@
   <packaging>kjar</packaging>
   <name>PHM-Processes</name>
   <description>Population Health Management</description>
-  <url>https://maucarba.blogspot.com/2019/12/process-management-or-case-management.html</url>
+  <url>https://maucarba.blogspot.com/2020/01/designing-event-driven-business-process.html</url>
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
