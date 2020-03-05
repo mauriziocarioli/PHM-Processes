@@ -8,7 +8,7 @@
   <packaging>kjar</packaging>
   <name>PHM-Processes</name>
   <description>Population Health Management</description>
-  <url>https://maucarba.blogspot.com/2019/12/process-management-or-case-management.html</url>
+  <url>https://maucarba.blogspot.com/2020/01/designing-event-driven-business-process.html</url>
   <properties>
     <!-- RHPAM 7.4.1 -->
     <!--version.org.kie>7.23.0.Final-redhat-00003</version.org.kie-->
