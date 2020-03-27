@@ -2,7 +2,7 @@
 
 Read this blog for more information:
 
-https://maucarba.blogspot.com/2020/01/designing-event-driven-business-process.html
+https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/
 
 === Requirements
 * Install event listeners: https://github.com/mauriziocarioli/PHM-Tracing and https://github.com/mauriziocarioli/Tracing
