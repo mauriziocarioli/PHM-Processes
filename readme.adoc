@@ -1,55 +1,301 @@
 = Population Health Management
 
-Read this blog for more information:
+Read this series of articles for more information:
 
-https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/
+https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/[Blog]
+
+This is a new version. The old version, which is the one used in the articles, has been released at https://github.com/mauriziocarioli/PHM-Processes/releases/tag/v1.0.0[v1.0.0]
 
 === Requirements
-* Install event listeners: https://github.com/mauriziocarioli/PHM-Tracing and https://github.com/mauriziocarioli/Tracing
-* Import and deploy the model https://github.com/mauriziocarioli/PHM-Model
+* Install event listeners: https://github.com/mauriziocarioli/PHM-Tracing/releases/tag/v2.0.0[PHM-Tracing]
+* Import and deploy the model https://github.com/mauriziocarioli/PHM-Model/releases/tag/v2.0.0[PHM-Model]
 * Create users and groups (see Wildfly script in src/main/sh)
-* Install and start service https://github.com/mauriziocarioli/PHM-API on Node.js
-* Configure a mock SMTP server such as https://mailtrap.io
+* Configure a mock SMTP server such as https://mailtrap.io and set the following environment variables:
+DEMO_SMTP_SERVER, DEMO_SMTP_PORT, DEMO_SMTP_USER, DEMO_SMTP_PWD
+* Set EAP system property org.jbpm.var.log.length to 65536
+* Set variable length in the database accordingly:
+
+If the database is either H2 or MySql
+[source,SQL]
+----
+ALTER TABLE VARIABLEINSTANCELOG MODIFY VALUE VARCHAR(65536);
+ALTER TABLE VARIABLEINSTANCELOG MODIFY OLDVALUE VARCHAR(65536);
+----
+If the database is PostgreSQL
+[source,SQL]
+----
+ALTER TABLE VARIABLEINSTANCELOG ALTER COLUMN VALUE TYPE CHARACTER VARYING(65536);
+ALTER TABLE VARIABLEINSTANCELOG ALTER COLUMN OLDVALUE TYPE CHARACTER VARYING(65536);
+----
+
+* (Optional) Install end-user UI: https://github.com/mauriziocarioli/phm-management-ui/releases/tag/v1.0.0[phm-management-ui]
 
 == Scenarios
-Start the process with a POST at the end point:
 
-http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/processes/PHM-Processes.R838/instances
+These scenarios demonstrate
+
+* a workflow where tasks are created only after another task is closed,
+* the implementation of both soft close of a task (determined by task completion) and hard close of a task
+(determined by an external system),
+* reminders and escalations.
+
+Start the process with a POST at the end point:
+[source,URL]
+----
+http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/processes/PHM-Processes.Trigger/instances
+----
+
+by posting:
+
 [source,JSON]
 ----
 {
-     "pMemberId": "123",
-     "pTriggerId": "R383"
+    "actionList": [
+        {
+            "com.health_insurance.phm_model.Action": {
+                "id": 35,
+                "origId": "A490.0",
+                "actor": "Peter",
+                "channel": "MCC",
+                "description": "Mary has Rheumatoid Arthritis and no evidence of filling a prescription for a DMARD within the last year.",
+                "message": "Mary has Rheumatoid Arthritis and no evidence of filling a prescription for a DMARD within the last year.",
+                "answerRequired": true,
+                "answerLabel": "Note:",
+                "supplementalDocumentationLabel": "Upload supplemental documentation if needed:",
+                "naLabel": "Has the issue been resolved?",
+                "naTextLabel": "Clarify how the issue has been resolved:",
+                "suppressed": false,
+                "sendMessage": false,
+                "expirationDate": "2020-12-31",
+                "slaDueDate": "45D",
+                "close": "HARD",
+                "remind": true,
+                "reminderFrequency": "R/P15D",
+                "reminderSendAddress": "peter@doctor.com",
+                "reminderFromAddress": "phm@healthinsurance.com",
+                "reminderSubject": "Reminder",
+                "reminderText": "Hello Peter, this is a friendly reminder that you have to complete your task.",
+                "escalationTimer": "P30D",
+                "escalationActor": "Patricia",
+                "escalationChannel": "CCN"
+            }
+        },
+        {
+            "com.health_insurance.phm_model.Action": {
+                "id": 58,
+                "origId": "B143",
+                "actor": "Charlie",
+                "channel": "CCN",
+                "description": "Mary has Rheumatoid Arthritis and no evidence of filling a prescription for a DMARD within the last year.",
+                "message": "Mary is receiving DMARD through PAP. A claim for a new prescription will need to be approved.",
+                "answerRequired": true,
+                "answerLabel": "Note:",
+                "supplementalDocumentationLabel": "Upload supplemental documentation if needed:",
+                "naLabel": "Has the issue been resolved?",
+                "naTextLabel": "Clarify how the issue has been resolved:",
+                "suppressed": false,
+                "sendMessage": false,
+                "expirationDate": "2020-12-31",
+                "slaDueDate": "15D",
+                "close": "HARD",
+                "remind": true,
+                "reminderFrequency": "R/PT15D",
+                "reminderSendAddress": "charlie@doctor.com",
+                "reminderFromAddress": "phm@healthinsurance.com",
+                "reminderSubject": "Reminder",
+                "reminderText": "Hello Charlie, this is a friendly reminder that you have to complete your task.",
+                "escalationTimer": "P90D",
+                "escalationActor": "Marc",
+                "escalationChannel": "CCN"
+            }
+        },
+        {
+            "com.health_insurance.phm_model.Action": {
+                "id": 128,
+                "origId": "C201",
+                "predecessor": 35,
+                "actor": "Mary",
+                "channel": "MLP",
+                "description": "Mary, you have Rheumatoid Arthritis and no evidence of filling a prescription for your Anti-Rheumatic Drug within the last year.",
+                "message": "Mary, review options to talk to a Florida Blue pharmacist.\n Click the Send button to call your pharmacy.",
+                "answerRequired": false,
+                "suppressed": false,
+                "sendMessage": true,
+                "expirationDate": "2020-12-31",
+                "slaDueDate": "21D",
+                "close": "SOFT",
+                "remind": true,
+                "reminderFrequency": "R/P7D",
+                "reminderSendAddress": "mary@mail.com",
+                "reminderFromAddress": "phm@healthinsurance.com",
+                "reminderSubject": "Reminder",
+                "reminderText": "Hello Mary, this is a friendly reminder that you have to complete your task.",
+                "escalationTimer": "P14D",
+                "escalationActor": "Charlie",
+                "escalationChannel": "CCN"
+            }
+        },
+        {
+            "com.health_insurance.phm_model.Action": {
+                "id": 112,
+                "origId": "C178",
+                "predecessor": 35,
+                "actor": "Robert",
+                "channel": "MCC",
+                "description": "Mary has Rheumatoid Arthritis and no evidence of filling a prescription for a DMARD within the last year.",
+                "message": "Mary is receiving DMARD through PAP. A new prescription is ready to be filled.",
+                "answerRequired": true,
+                "answerLabel": "Note",
+                "supplementalDocumentationLabel": "Upload supplemental documentation if needed:",
+                "naLabel": "Has the issue been resolved?",
+                "naTextLabel": "Clarify how the issue has been resolved:",
+                "suppressed": false,
+                "sendMessage": false,
+                "expirationDate": "2020-12-31",
+                "close": "SOFT",
+                "slaDueDate": "21D",
+                "remind": true,
+                "reminderFrequency": "R/P7D",
+                "reminderSendAddress": "robert@pharmacy.com",
+                "reminderFromAddress": "phm@healthinsurance.com",
+                "reminderSubject": "Reminder",
+                "reminderText": "Hello Robert, this is a friendly reminder that you have to complete your task.",
+                "escalationTimer": "P14D",
+                "escalationActor": "Matthew",
+                "escalationChannel": "CCN"
+            }
+        }
+    ]
 }
 ----
-The values of pMemberId and pTriggerId are unimportant.
 
 If a task requires to be hard closed just send a signal with this POST end point:
 
+[source,URL]
+----
 http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/processes/instances/{{processInstanceId}}/signal/hard_close
+----
 
 where {{processInstanceId}} is the specific task process instance id and the POST body is empty.
 
 === Baseline Scenario (Happy Path)
-Login as the jBPM administrator and follow the execution of the process and subprocesses
-in the Manage section of Business Central.
-Start the process and use a browser incognito window to login as the actors listed below:
 
-* Actor: Peter (pro)
-* Actor: Mary (mem)
-* Actor: Robert (rxs)
-* Actor: Charlie (chw)
+https://www.arthritis.org/drug-guide/dmards/dmards[DMARD drugs reference]
+
+Mary has an insurance program with Health-Insurance.com and has reumathoid arthritis. Her DMARD prescription has run out of refills. This is the trigger for several actions to be taken.
+
+* Peter, Mary's doctor, must be notified and write a new prescription. This action is considered complete only after the claim for the new prescription has been approved (hard close)
+* Charlie, Mary's case manager, must be notified and do back office work. This action is considered complete only after the new prescription has been approved (hard close)
+* Mary must be notified after Peter's action has hard closed that is after her new prescription has been written. This action is completed after the notification is acknowledged (soft close)
+* Robert, Mary's pharmacist must be notified after Peter's action has hard closed. This action is completed after the notification is acknowleged (soft close)
+
+Each task failure to soft close in a timely manner will cause an email reminder to be sent.
+
+Each task failure to hard close in a timely manner will cause an escalation.
+
+Login as the jBPM administrator and follow the execution of the process and subprocesses
+in the Manage section of Business Central. See that by submitting the data above three processes are started: the Trigger process and two Action processes, the one for Peter and the one for Charlie.
+
+Use a browser incognito window to login as the actors listed below:
+
+* Actor: Peter (pro) is the provider. Complete the task and hard close it. See how two more processes are started: the Action processes for Mary and Robert.
+* Actor: Mary (mem) is the Insurance member. Complete the task.
+* Actor: Robert (rxs) is the pharmacist. Complete the task.
+* Actor: Charlie (chw) is the Insurance case nurse. Complete the task and then hard close it.
 
 === Reminder Scenario
-* Change reminder timer in B143 subprocess to 30s, deploy and start the process.
-* Let 30s timer expires.
-* See that reminder service has executed.
-Login in the incognito window as the actor below and complete the task.
-* Actor: Charlie (chw)
+
+* Change reminder timer in Charlie's subprocess to 15s (R/PT15S), deploy and start the process.
+* Let the 15s timer expires.
+* See that reminder service has executed. Check the mailbox for the reminder email.
+Login in the incognito window as the actor below:
+* Actor: Charlie (chw). Complete the task.
+* See that the reminder has stopped.
+* Hard close the task.
 
 === Escalation Scenario
-* Change escalation timer in B143 subprocess to 30s
+
+* Change escalation timer in Charlie's subprocess to 30s
 * Let 30s timer expires. Login in the incognito window
-as the actor below and complete the escalation task:
-* Actor: Marc (mch)
-* Actor: Charlie (chw)
+as the actor below:
+* Actor: Marc (mch) is the Insurance case manager. Complete the task.
+
+=== A Different Trigger Scenario
+
+This scenario demonstrates that a change in the input data produces a different workflow with no need to manually define one.
+
+Start the process with this payload:
+[source,JSON]
+----
+{
+    "pDataList": [
+        {
+            "com.health_insurance.phm_model.Response": {
+                "task": {
+                    "id": 76,
+                    "origId": "C123.0",
+                    "description": "HCC9: Dropped diagnosis of lung and other severe cancers for risk adjustment.",
+                    "text": "Dropped diagnosis of lung cancer. Please confirm if diagnosis should or should not be coded and submit supporting documentation for risk adjustment",
+                    "answerRequired": true,
+                    "answerLabel": "Doctor's Note",
+                    "naTextLabel": "Explanation if no further action is needed",
+                    "suppressed": false,
+                    "sendMessage": false,
+                    "expirationDate": "2020-12-31",
+                    "close": "SOFT",
+                    "remind": true,
+                    "reminderInitiation": "P14D",
+                    "reminderFrequency": "R/P14D",
+                    "escalationTimer": "P30D",
+                    "slaDueDate": "45D"
+                },
+                "assignment": {
+                    "actor": "Peter",
+                    "channel": "MLP",
+                    "escalationActor": "Matthew",
+                    "escalationChannel": "CCN"
+                },
+                "reminder": {
+                    "address:": "peter@mail.com",
+                    "from": "phm@healthinsurance.com",
+                    "subject": "Reminder",
+                    "body": "Hello Peter, this is a friendly reminder that you have to complete your task."
+                }
+            }
+        },
+        {
+            "com.health_insurance.phm_model.Response": {
+                "task": {
+                    "id": 48,
+                    "origId": "B104",
+                    "description": "Conduct necessary Pharmacy activities for suspected or dropped diagnosis.",
+                    "text": "",
+                    "answerRequired": false,
+                    "answerLabel": "Pharmacist's Note",
+                    "naTextLabel": "Explanation if no further action is needed",
+                    "suppressed": false,
+                    "expirationDate": "2020-12-31",
+                    "sendMessage": false,
+                    "close": "SOFT",
+                    "remind": false,
+                    "escalationTimer": "P14D",
+                    "slaDueDate": "21D"
+                },
+                "assignment": {
+                    "actor": "Robert",
+                    "channel": "MCC",
+                    "escalationActor": "Matthew",
+                    "escalationChannel": "CCN"
+                },
+                "reminder": {
+                    "address:": "robert@pharmacy.com",
+                    "from": "phm@healthinsurance.com",
+                    "subject": "Reminder",
+                    "body": "Hello Robert, this is a friendly reminder that you have to complete your task."
+                }
+            }
+        }
+    ]
+}
+----
+The actors are now only Peter (the doctor) and Robert (the pharmacist).
