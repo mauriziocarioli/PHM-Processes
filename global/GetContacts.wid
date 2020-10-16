@@ -1,0 +1,16 @@
+[
+
+   [
+    "name" : "GetContacts",
+    "defaultHandler" : "mvel: new com.health_insurance.phm_processes.GetContactsWorkItemHandler()",
+    "parameters" : [
+      "actionList" : new ListDataType()
+    ],
+    "results" : [
+      "Result" : new ListDataType()
+    ],
+    "displayName" : "Get Contacts",
+    "icon" : "defaultservicenodeicon.png"
+   ]
+
+]
