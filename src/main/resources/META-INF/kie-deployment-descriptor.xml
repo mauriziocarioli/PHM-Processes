@@ -18,11 +18,6 @@
             <identifier>new com.health_insurance.tracing.PHMProcessEventListener()</identifier>
             <parameters/>
         </event-listener>
-        <event-listener>
-            <resolver>mvel</resolver>
-            <identifier>new com.health_insurance.tracing.PHMAgendaEventListener()</identifier>
-            <parameters/>
-        </event-listener>
     </event-listeners>
     <task-event-listeners>
         <task-event-listener>
@@ -41,9 +36,9 @@
         </work-item-handler>
         <work-item-handler>
             <resolver>mvel</resolver>
-            <identifier>new org.jbpm.process.workitem.rest.RESTWorkItemHandler(System.getenv("DEMO_REST_USER"), System.getenv("DEMO_REST_PWD"))</identifier>
+            <identifier>new com.health_insurance.phm_processes.GetContactsWorkItemHandler()</identifier>
             <parameters/>
-            <name>Rest</name>
+            <name>GetContacts</name>
         </work-item-handler>
     </work-item-handlers>
     <environment-entries/>

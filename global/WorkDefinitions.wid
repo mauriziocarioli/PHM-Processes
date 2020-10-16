@@ -1,4 +1,5 @@
 [
+
   [
     "name" : "Log",
     "parameters" : [
@@ -60,4 +61,5 @@
     "icon" : "defaultmilestoneicon.png",
     "category" : "Milestone"
     ]
+    
 ]
