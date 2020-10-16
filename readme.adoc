@@ -1,0 +1,61 @@
+= Population Health Management
+
+Read this blog for more information:
+
+https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/[Blog]
+
+=== Requirements
+* Install event listeners: https://github.com/mauriziocarioli/PHM-Tracing/releases/tag/v1.0.0[PHM-Tracing] and https://github.com/mauriziocarioli/Tracing/releases/tag/v1.0.0[Tracing]
+* Import and deploy the model https://github.com/mauriziocarioli/PHM-Model/releases/tag/v1.0.0[PHM-Model]
+* Create users and groups (see Wildfly script in src/main/sh)
+* Install and start service https://github.com/mauriziocarioli/PHM-API/releases/tag/v1.0.0[PHM-API] on Node.js
+* Configure a mock SMTP server such as https://mailtrap.io[mailtrap.io]
+
+== Scenarios
+Start the process with a POST at the end point:
+
+[source,URL]
+----
+http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/processes/PHM-Processes.R838/instances
+----
+[source,JSON]
+----
+{
+     "pMemberId": "123",
+     "pTriggerId": "R383"
+}
+----
+The values of pMemberId and pTriggerId are unimportant.
+
+If a task requires to be hard closed just send a signal with this POST end point:
+
+[source,URL]
+----
+http://localhost:8080/kie-server/services/rest/server/containers/PHM-Processes/processes/instances/{{processInstanceId}}/signal/hard_close
+----
+
+where {{processInstanceId}} is the specific task process instance id and the POST body is empty.
+
+=== Baseline Scenario (Happy Path)
+Login as the jBPM administrator and follow the execution of the process and subprocesses
+in the Manage section of Business Central.
+Start the process and use a browser incognito window to login as the actors listed below:
+
+* Actor: Peter (pro)
+* Actor: Mary (mem)
+* Actor: Robert (rxs)
+* Actor: Charlie (chw)
+
+=== Reminder Scenario
+* Change reminder timer in B143 subprocess to 30s, deploy and start the process.
+* Let 30s timer expires.
+* See that reminder service has executed.
+Login in the incognito window as the actor below and complete the task.
+* Actor: Charlie (chw)
+
+=== Escalation Scenario
+* Change escalation timer in B143 subprocess to 30s
+* Let 30s timer expires. Login in the incognito window
+as the actor below and complete the escalation task:
+* Actor: Marc (mch)
+* Actor: Charlie (chw)

@@ -1,0 +1,7 @@
+# BPMN gitattributes
+*.java  text diff=java
+*.bpmn  text diff=java
+*.bpmn2 text diff=java
+*.frm   text diff=java
+*.xml   text
+*.class  binary
