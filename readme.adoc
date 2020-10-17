@@ -116,7 +116,7 @@ Use end-user UI to login as the actors listed below:
 * Change reminder timer in Charlie's subprocess to 15s (R/PT15S), deploy and start the process.
 * Let the 15s timer expires.
 * See that reminder service has executed. Check the mailbox for the reminder email.
-Login in the incognito window as the actor below:
+Login in the end-user UI as the actor below:
 * Actor: Charlie (chw). Complete the task.
 * See that the reminder has stopped.
 * Hard close the task.
@@ -124,7 +124,8 @@ Login in the incognito window as the actor below:
 === Escalation Scenario
 
 * Change escalation timer in Charlie's subprocess to 30s
-* Let 30s timer expires. Login in the incognito window
+* Charlie completes the task but the hard code signal is not thrown
+* Let 30s timer expires. Login in the end-user UI
 as the actor below:
 * Actor: Marc (mch) is the Insurance case manager. Complete the task.
 
