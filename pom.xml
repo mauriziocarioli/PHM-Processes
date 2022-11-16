@@ -10,7 +10,7 @@
   <description>Population Health Management</description>
   <url>https://developers.redhat.com/blog/2020/02/19/designing-an-event-driven-business-process-at-scale-a-health-management-example-part-1/</url>
   <properties>
-    <version.jackson>2.11.2</version.jackson>
+    <version.jackson>2.12.7.1</version.jackson>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
     <version.org.kie>7.43.1.Final</version.org.kie>
